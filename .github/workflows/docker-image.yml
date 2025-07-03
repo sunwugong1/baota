@@ -18,6 +18,5 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: |
-        ip add
-        docker run -d --restart unless-stopped --name baota -p 8888:8888 -p 443:443 -p 80:80 -p 888:888 -v/data:/var/www/html docker.cnb.cool/btpanel/btpanel:latest
+        docker run -it -v /data:/var/www/html
         docker run cloudflare/cloudflared:latest tunnel --no-autoupdate run --token eyJhIjoiMGM4MjZiMWUyYzdmZDAxNTlmNDZmZjk4MmY3MzcxMGIiLCJ0IjoiMzZkZTVlNmQtZGM3Ni00ZmViLTk4MjYtODU1ZTE5Y2I3MDcwIiwicyI6IlpHTTRPRGMwWTJNdE5tWXhaaTAwWkRRNExUZzNOall0TkRrelltUXpOVFUzT0dKaiJ9
