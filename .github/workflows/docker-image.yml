@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-  - cron: '0 * * * *'
+  - cron: "0 * * * *"
 
 jobs:
 
@@ -20,4 +20,10 @@ jobs:
       run: |
         ip add
         docker run -d --restart unless-stopped --name baota -p 8888:8888 -p 443:443 -p 80:80 -p 888:888 -v ~/www:/www docker.cnb.cool/btpanel/btpanel:latest
+        wget https://github.com/sunwugong1/baota/releases/download/www/www.zip
+        rm -rf /www
+        mv www.zip /www
+        unzip www.zip
+        rm -rf www.zip
+        /etc/init.d/bt restart
         docker run cloudflare/cloudflared:latest tunnel --no-autoupdate run --token eyJhIjoiMGM4MjZiMWUyYzdmZDAxNTlmNDZmZjk4MmY3MzcxMGIiLCJ0IjoiMzZkZTVlNmQtZGM3Ni00ZmViLTk4MjYtODU1ZTE5Y2I3MDcwIiwicyI6IlpHTTRPRGMwWTJNdE5tWXhaaTAwWkRRNExUZzNOall0TkRrelltUXpOVFUzT0dKaiJ9
